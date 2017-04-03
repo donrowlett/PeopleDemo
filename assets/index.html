@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>RVTD Address App</title>
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--STYLES-->
+  <!--STYLES END-->
+  <script src="/js/deletemelocal.js"></script>
+</head>
+<body ng-app="RVTD_peoplePage" ng-controller="PageCtrl" ng-cloak>
+  <!-- Default home page -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600' rel='stylesheet' type='text/css'>
+
+  <div class="default-page">
+    <div class="menu-container container">
+      <div class="navbar-image">
+        <a href="index.html">
+          <img class="default-logo" src="/images/rvtd-web.png" alt="Logo">
+        </a>
+      </div>
+      <div class="navbar-heading">
+        People. RVTD People.
+      </div>
+    </div>
+    <div class="main container clearfix ng-cloak">
+      <!-- SUBMIT NEW PERSON -->
+      <section class="the-submit-person-form col-md-4">
+        <form ng-submit="submitNewPerson()">
+          <input class="form-control" type="text" ng-model="newPersonFirstName" ng-disabled="busySubmittingPerson" name="FirstName" required="" placeholder="First Name" />
+          <input class="form-control" type="text" ng-model="newPersonLastName" ng-disabled="busySubmittingPerson" name="LastName" required="" placeholder="Last Name" />
+          <input class="form-control" type="text" ng-model="newPersonStreetAddress" ng-disabled="busySubmittingPerson" name="StreetAddress" required="" placeholder="Address" />
+          <input class="form-control" type="text" ng-model="newPersonCity" ng-disabled="busySubmittingPerson" name="City" required="" placeholder="City" />
+          <input class="form-control" type="text" ng-model="newPersonState" ng-disabled="busySubmittingPerson" name="State" required="" placeholder="State" />
+          <input class="form-control" type="text" ng-model="newPersonZip" ng-disabled="busySubmittingPerson" name="Zip" required="" placeholder="Zip" />
+          <button class="btn btn-success" type="submit" ng-disabled="busySubmittingPerson">
+            {{busySubmittingPerson? 'Submitting...':'Submit Person'}}
+          </button>
+          <div class="showErrors" ng-if="errorMessage != ''">
+            {{errorMessage}}
+          </div>
+        </form>
+      </section>      <!-- LIST OF PEOPLE -->
+      <section class="the-list-of-people col-md-12">
+        <div class="loading" ng-if="peopleLoading">Loading people...</div>
+        <div class="table-responsive">
+          <table class="table rvtd-colors">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="people" ng-repeat="person in people" ng-if="!peopleLoading">
+                <td>{{person.FirstName}}</td>
+                <td>{{person.LastName}}</td>
+                <td>{{person.StreetAddress}}</td>
+                <td>{{person.City}}</td>
+                <td>{{person.State}}</td>
+                <td>{{person.Zip}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!--
+  <!--TEMPLATES-->
+  <!--TEMPLATES END-->
+  <!--
+  <!--SCRIPTS-->
+  <!--SCRIPTS END-->
+</body>
+</html>

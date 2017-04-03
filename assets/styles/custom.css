@@ -1,0 +1,91 @@
+﻿body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  color: white;
+  font-family: "Ubuntu", "Open Sans", "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background: #fff;
+}
+/* Center the logo*/
+img {
+  width: 100px;
+  margin: 30px auto 0px auto;
+  display: block;
+}
+/* Center the heading */
+.jumboHeading {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 2.5em;
+}
+
+/* Center the heading */
+.jumboSubHeading {
+  text-align: center;
+}
+/* Don't display bullet points in list */
+.the-list-of-people {
+   list-style-type: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.menu-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: white;
+  height: 120px;
+}
+
+.navbar-image {
+  float: left;
+}
+
+.navbar-heading {
+  float: right;
+  color: #18ba9b;
+  margin: 40px 50px 0 0;
+  font-size: 24px;
+}
+
+.main {
+  background-image: url(/images/fadebg.jpg);
+  clear: both;
+}
+
+.showErrors {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ebccd1;
+  padding: 15px 0;
+}
+
+.rvtd-colors {
+  color: #18ba9b;
+  background-color: #fff;
+  font-size: 12px;
+  text-align: center;
+}
+
+.the-submit-person-form {
+  margin: 50px 0 25px 0;
+  text-align: center;
+  background: #18ba9b;
+  padding: 30px;
+}
+
+.the-list-of-people {
+  margin: 25px 0 50px 0;
+  text-align: center;
+  background: #18ba9b;
+  padding: 30px;
+}
