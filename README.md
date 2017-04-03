@@ -31,19 +31,29 @@ Steps necessary to produce project:
 
 Installation instructions:
  - Create DB: In your local MySQL server, create a database.  I used the name 'RVTDTestDonRowlett' with user id 'root', but You can use any name or userid or password that you like.  It is not necessary to add any tables or create any schemas, the app should be able to do all that for you.
- - Create a directory and install the git repository. 
 
+ - Create a project directory, change dir into it, and clone the git repository. If you have a zip file, expand into the directory, otherwise use:  "git clone https://github.com/donrowlett/PeopleDemo.git"
 
- - You would normally keep sensitive info in config/local.js, but for the purpose of this exercise I have it in assets/js/deletemelocal.js.  Make the following changes: 
-    - chg db_name, db_user and db_password to match what you created in MySQL server.
+ - Sensitive info is normally kept in config/local.js, and that file is excluded from the repository for that very purpose.  You need to create config/local.js containing the following:
+ 
+ 
+            module.exports = {
+                environment: process.env.NODE_ENV || 'development',
+                db_user: 'xxxx',  // username for accessing MySQL database
+                db_password: 'LSpec5DawniseM%',  // password for the same
+                db_name: 'RVTDTestDonRowlett'  // or whatever name you used.
+            };
+
     - ensure environment is 'development' for now.  chg to 'production' after database is created.
-
 
     - To generate table in database, node environment must not be 'production'.
     (To see current value, In command shell type NODE, then process.env, look for NODE_ENV)
-    - If not already set to 'development', Set node environment variable: $NODE_ENV=development
+    - If not already set to 'development', Set node environment variable: $NODE_ENV='development''
 
- - In command window, change to project directory, and type 'node app'.  After init messages stabilize, open a browser window and launch the app, usually by browsing to 'localhost:1337'. Have fun!
+ - You'll probably need to install missing NPM modules.  In command window, change to project directory, and type "npm install"
+ - I had a bit of trouble getting the database adapter to install automatically.  If sails.mysql is not in your list of installed modules, type 'npm install sails-mysql'.
+
+- In command window, change to project directory, and type 'node app'.  After init messages stabilize, open a browser window and launch the app, usually by browsing to 'localhost:1337'. Have fun!
 
  - If you were able to save records, then the database was successfully created.  You can safely change NODE_ENV to 'production'.  And to prevent data loss in test environments, in config.models change 'migrations' to 'safe'.
 
@@ -84,6 +94,7 @@ Plug-ins:
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
     "sails-generate-static": "^0.11.3",
+    "sails-mysql": "0.11.5",
     "waterline": "^0.11.11"
 
     That's it for now.  Let me know if you need anything else.

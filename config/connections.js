@@ -18,6 +18,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.connections.html
  */
+const config = require('./local.js');
 
 module.exports.connections = {
 
@@ -34,9 +35,9 @@ module.exports.connections = {
   someMysqlServer: {
       adapter: 'sails-mysql',
       host: 'localhost',
-      user: db_user,
-      password: db_password,
-      database: db_name
+      user: config.db_user,
+      password: config.db_password,
+      database: config.db_name
   },
 
 

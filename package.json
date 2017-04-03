@@ -27,6 +27,7 @@
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
     "sails-generate-static": "^0.11.3",
+    "sails-mysql": "0.11.5",
     "waterline": "^0.11.11"
   },
   "scripts": {
