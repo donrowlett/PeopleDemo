@@ -2,7 +2,7 @@
 
 A Node.js application to accept information about people, store it in a MySQL database, and present it as a list
 
-Author: Don Rowlett - don@donrowlett.con 541-531-9090
+Author: Don Rowlett - don@donrowlett.com 541-531-9090
 
 Framework: Sails(http://sailsjs.org) 
 IDE: Visual Studio
