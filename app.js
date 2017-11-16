@@ -1,4 +1,4 @@
-﻿//var config = require('./config/local.js');/**
+﻿/*//var config = require('./config/local.js');/!**
  * app.js
  *
  * Use `app.js` to run your app without `sails lift`.
@@ -16,7 +16,7 @@
  *
  * The same command-line arguments are supported, e.g.:
  * `node app.js --silent --port=80 --prod`
- */
+ *!/*/
 
 
 // Ensure we're in the project directory, so cwd-relative paths work as expected
