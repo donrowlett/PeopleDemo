@@ -4,7 +4,7 @@
  * @description Name and address info
  */
 
-module.exports = {
+exports = {
 
     attributes: {
         ID: {

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>RVTD Rides App</title>
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--STYLES-->
+  <!--STYLES END-->
+  <script src="js/deletemelocal.js"></script>
+</head>
+<body ng-app="RVTD_peoplePage" ng-controller="AddTripCtrl" ng-cloak>
+  <!-- Default home page -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600' rel='stylesheet' type='text/css'>
+
+  <div class="default-page">
+    <div class="menu-container container">
+      <div class="navbar-image">
+        <a href="index.html">
+          <img class="default-logo" src="images/rvtd-web.png" alt="Logo">
+        </a>
+      </div>
+      <div class="navbar-heading">
+        People. RVTD People.
+      </div>
+    </div>
+    <div class="main container clearfix ng-cloak">
+      <!-- SUBMIT NEW Trip -->
+      <section class="the-submit-Person-form col-md-4">
+        <form ng-submit="submitNewTrip()">
+          <input class="form-control" type="text" ng-model="newTripOriginDateTime" ng-disabled="busySubmittingTrip" name="OriginDateTime" required="" placeholder="Origin DateTime" />
+          <input class="form-control" type="text" ng-model="newTripOriginAddress" ng-disabled="busySubmittingTrip" name="OriginAddress" required="" placeholder="Origin Address" />
+          <input class="form-control" type="text" ng-model="newTripOriginCity" ng-disabled="busySubmittingTrip" name="OriginCity" required="" placeholder="Origin City" />
+          <input class="form-control" type="text" ng-model="newTripOriginState" ng-disabled="busySubmittingTrip" name="OriginState" required="" placeholder="Origin State" />
+          <input class="form-control" type="text" ng-model="newTripOriginZip" ng-disabled="busySubmittingTrip" name="OriginZip" required="" placeholder="Origin Zip" />
+          <input class="form-control" type="text" ng-model="newTripDestinationDateTime" ng-disabled="busySubmittingTrip" name="DestinationDateTime" required="" placeholder="Destination DateTime" />
+          <input class="form-control" type="text" ng-model="newTripDestinationAddress" ng-disabled="busySubmittingTrip" name="DestinationAddress" required="" placeholder="Destination Address" />
+          <input class="form-control" type="text" ng-model="newTripDestinationCity" ng-disabled="busySubmittingTrip" name="DestinationCity" required="" placeholder="Destination City" />
+          <input class="form-control" type="text" ng-model="newTripDestinationState" ng-disabled="busySubmittingTrip" name="DestinationState" required="" placeholder="Destination State" />
+          <input class="form-control" type="text" ng-model="newTripDestinationZip" ng-disabled="busySubmittingTrip" name="DestinationZip" required="" placeholder="Destination Zip" />
+          <input class="form-control" type="text" ng-model="newTripDestinationPhone" ng-disabled="busySubmittingTrip" name="DestinationPhone" required="" placeholder="Destination Phone" />
+          <button class="btn btn-success" type="submit" ng-disabled="busySubmittingTrip">
+            {{busySubmittingTrip? 'Submitting...':'Submit Trip'}}
+          </button>
+          <div class="showErrors" ng-if="errorMessage != ''">
+            {{errorMessage}}
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+  <!--
+  <!--TEMPLATES-->
+  <!--TEMPLATES END-->
+  <!--
+  <!--SCRIPTS-->
+  <!--SCRIPTS END-->
+</body>
+</html>
