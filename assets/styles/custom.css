@@ -58,7 +58,7 @@ img {
 }
 
 .main {
-  background-image: url(/assets/images/fadebg.jpg);
+  background-image: url(../images/fadebg.jpg);
   clear: both;
 }
 

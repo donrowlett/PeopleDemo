@@ -4,7 +4,7 @@
  * @description Trip info
  */
 
-exports = {
+module.exports = {
 
     attributes: {
         ID: {
@@ -15,7 +15,7 @@ exports = {
             autoIncrement: true
         },
         OriginDateTime: {
-            type: 'date',
+            type: 'datetime',
             required: true,
             columnName: 'Origin DateTime'
         },
@@ -39,14 +39,14 @@ exports = {
           regex: /^\d{5}$|^\d{5}(-\d{4})$/
         },
         DestinationDateTime: {
-          type: 'date',
+          type: 'datetime',
           required: true,
-          columnName: 'Last Name'
+          columnName: 'Destination DateTime'
         },
         DestinationAddress: {
           type: 'string',
           required: true,
-          columnName: 'Origin House Number and Street Name'
+          columnName: 'Destination House Number and Street Name'
         },
         DestinationCity: {
           type: 'string',

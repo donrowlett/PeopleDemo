@@ -1,10 +1,11 @@
-﻿/**
+﻿// noinspection Annotator
+/**
  * People.js
  *
  * @description Name and address info
  */
 
-exports = {
+module.exports = {
 
     attributes: {
         ID: {

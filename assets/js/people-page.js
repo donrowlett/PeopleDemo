@@ -5,9 +5,6 @@
         ]);
     });
 
-
-
-
 myApp.controller('PageCtrl', [
     '$scope', '$http',
     function($scope, $http) {

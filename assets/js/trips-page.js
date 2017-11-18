@@ -1,4 +1,4 @@
-﻿myApp = angular.module('RVTD_peoplePage', [])
+﻿myApp = angular.module('RVTD_tripsPage', [])
     .config(function($sceDelegateProvider) {
         $sceDelegateProvider.resourceUrlWhitelist([
             'self'
@@ -26,12 +26,12 @@ myApp.controller('AddTripCtrl', [
             // (thanks to ng-model, it's already in the $scope object)
             var _newTrip = {
                 OriginDateTime: $scope.newTripOriginDateTime,
-                OriginStreetAddress: $scope.newTripOriginAddress,
+                OriginAddress: $scope.newTripOriginAddress,
                 OriginCity: $scope.newTripOriginCity,
                 OriginState: $scope.newTripOriginState,
                 OriginZip: $scope.newTripOriginZip,
                 DestinationDateTime: $scope.newTripDestinationDateTime,
-                DestinationStreetAddress: $scope.newTripDestinationAddress,
+                DestinationAddress: $scope.newTripDestinationAddress,
                 DestinationCity: $scope.newTripDestinationCity,
                 DestinationState: $scope.newTripDestinationState,
                 DestinationZip: $scope.newTripDestinationZip,
@@ -40,39 +40,39 @@ myApp.controller('AddTripCtrl', [
 
             // (this is where you put your client-side validation when relevant)
 
-            if (_newTrip.OriginDateTime === null || /[^a-zA-Z ]/.test(_newTrip.OriginDateTime)) {
+            if (_newTrip.OriginDateTime === null || !/.*/.test(_newTrip.OriginDateTime)) {
                 $scope.errorMessage = "Origin DateTime is required and must be DateTime.";
             }
-            if (_newTrip.DestinationDateTime === null || /[^a-zA-Z ]/.test(_newTrip.DestinationDateTime)) {
-                $scope.errorMessage = "Destination DateTime is required and must be DateTime.";
+            if (_newTrip.OriginAddress === null) {
+              $scope.errorMessage = "Origin Address is required.";
             }
-          if (_newTrip.OriginStreetAddress === null) {
-            $scope.errorMessage = "Origin Street Address is required.";
-          }
-          if (_newTrip.OriginCity === null) {
-            $scope.errorMessage = "Origin City is required.";
-          }
-          if (_newTrip.OriginState === null || !/((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR])|(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))/.test(_newTrip.OriginState)) {
-            $scope.errorMessage = "Origin State is required and must be an official 2-character code.";
-          }
-          if (_newTrip.OriginZip === null || !/^\d{5}$|^\d{5}(-\d{4})$/.test(_newTrip.OriginZip)) {
-            $scope.errorMessage = "Origin Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
-          }
-          if (_newTrip.DestinationStreetAddress === null) {
-            $scope.errorMessage = "Destination Street Address is required.";
-          }
-          if (_newTrip.DestinationCity === null) {
-            $scope.errorMessage = "Destination City is required.";
-          }
-          if (_newTrip.DestinationState === null || !/((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR])|(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))/.test(_newTrip.DestinationState)) {
-            $scope.errorMessage = "Destination State is required and must be an official 2-character code.";
-          }
-          if (_newTrip.DestinationZip === null || !/^\d{5}$|^\d{5}(-\d{4})$/.test(_newTrip.DestinationZip)) {
-            $scope.errorMessage = "Destination Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
-          }
-          if (_newTrip.DestinationPhone === null || !/^\d{10}$/.test(_newTrip.DestinationZip)) {
-            $scope.errorMessage = "Destination Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
-          }
+            if (_newTrip.OriginCity === null) {
+              $scope.errorMessage = "Origin City is required.";
+            }
+            if (_newTrip.OriginState === null || !/((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR])|(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))/.test(_newTrip.OriginState)) {
+              $scope.errorMessage = "Origin State is required and must be an official 2-character code.";
+            }
+            if (_newTrip.OriginZip === null || !/^\d{5}$|^\d{5}(-\d{4})$/.test(_newTrip.OriginZip)) {
+              $scope.errorMessage = "Origin Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
+            }
+            if (_newTrip.DestinationDateTime === null || !/.*/.test(_newTrip.DestinationDateTime)) {
+              $scope.errorMessage = "Destination DateTime is required and must be DateTime.";
+            }
+            if (_newTrip.DestinationAddress === null) {
+              $scope.errorMessage = "Destination Address is required.";
+            }
+            if (_newTrip.DestinationCity === null) {
+              $scope.errorMessage = "Destination City is required.";
+            }
+            if (_newTrip.DestinationState === null || !/((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR])|(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))/.test(_newTrip.DestinationState)) {
+              $scope.errorMessage = "Destination State is required and must be an official 2-character code.";
+            }
+            if (_newTrip.DestinationZip === null || !/^\d{5}$|^\d{5}(-\d{4})$/.test(_newTrip.DestinationZip)) {
+              $scope.errorMessage = "Destination Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
+            }
+            if (_newTrip.DestinationPhone === null || !/^\d{10}$/.test(_newTrip.DestinationPhone)) {
+              $scope.errorMessage = "Destination Phone is required and must be 10 digits.";
+            }
 
             if ($scope.errorMessage === "") {
                 // Now we'll submit the new Trip to the server:
@@ -81,7 +81,7 @@ myApp.controller('AddTripCtrl', [
                 // (also disables form submission)
                 $scope.busySubmittingTrip = true;
 
-                $http.post('/people/create', {
+                $http.post('/trips/create', {
                   OriginDateTime: _newTrip.OriginDateTime,
                   OriginAddress: _newTrip.OriginAddress,
                   OriginCity: _newTrip.OriginCity,
@@ -102,7 +102,7 @@ myApp.controller('AddTripCtrl', [
                         if (error.data.invalidAttributes) {
                             $scope.errorMessage = 'Error writing to database. ';
                             for (var attribute in error.data.invalidAttributes) {
-                                $scope.errorMessage = '<br />Invalid data in ' + attribute;
+                                $scope.errorMessage = 'Invalid data in ' + attribute;
                             }
                         } else {
                             $scope.errorMessage = 'Error writing to database.';
