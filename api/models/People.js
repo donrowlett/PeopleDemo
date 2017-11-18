@@ -1,4 +1,5 @@
-﻿/**
+﻿// noinspection Annotator
+/**
  * People.js
  *
  * @description Name and address info

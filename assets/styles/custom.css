@@ -14,7 +14,7 @@ html {
 /* Center the logo*/
 img {
   width: 100px;
-  margin: 30px auto 0px auto;
+  margin: 30px auto 0 auto;
   display: block;
 }
 /* Center the heading */
@@ -58,7 +58,7 @@ img {
 }
 
 .main {
-  background-image: url(/images/fadebg.jpg);
+  background-image: url(../images/fadebg.jpg);
   clear: both;
 }
 
