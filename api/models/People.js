@@ -41,14 +41,27 @@ module.exports = {
             required: true,
             regex: /^((A[LKSZR])|(C[AOT])|(D[EC])|(F[ML])|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EHDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR])|(P[WAR])|(RI)|(S[CD])|(T[NX])|(UT)|(V[TIA])|(W[AVIY]))$/
         },
-        Zip: {
-            type: 'string',
-            required: true,
-            regex: /^\d{5}$|^\d{5}(-\d{4})$/
-        },
-        Deleted: {
-            type: 'boolean'
-        }
+      Zip: {
+        type: 'string',
+        required: true,
+        regex: /^\d{5}$|^\d{5}(-\d{4})$/
+      },
+      Phone: {
+        type: 'string',
+        required: true,
+        regex: /^\d{3}-\d{3}-\d{4}$/
+      },
+      Wheelchair: {
+        type: 'boolean',
+        required: true,
+      },
+      PhotoUrl: {
+        type: 'string',
+        required: false,
+      },
+      Deleted: {
+          type: 'boolean'
+      }
     }
 
 };

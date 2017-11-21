@@ -5,9 +5,6 @@
         ]);
     });
 
-
-
-
 myApp.controller('AddTripCtrl', [
     '$scope', '$http',
     function($scope, $http) {
@@ -70,7 +67,7 @@ myApp.controller('AddTripCtrl', [
             if (_newTrip.DestinationZip === null || !/^\d{5}$|^\d{5}(-\d{4})$/.test(_newTrip.DestinationZip)) {
               $scope.errorMessage = "Destination Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
             }
-            if (_newTrip.DestinationPhone === null || !/^\d{10}$/.test(_newTrip.DestinationPhone)) {
+            if (_newTrip.DestinationPhone === null || !/^\d{3}-\d{3}-\d{4}$/.test(_newTrip.DestinationPhone)) {
               $scope.errorMessage = "Destination Phone is required and must be 10 digits.";
             }
 
@@ -95,14 +92,14 @@ myApp.controller('AddTripCtrl', [
                   DestinationPhone: _newTrip.DestinationPhone
                 })
                     .then(function onSuccess(sailsResponse) {
-                        $scope.people.unshift(_newTrip);
+                        $scope.trips.unshift(_newTrip);
                     })
                     .catch(function onError(error) {
                         console.log("An unexpected error occurred: " + error.statusText);
                         if (error.data.invalidAttributes) {
                             $scope.errorMessage = 'Error writing to database. ';
                             for (var attribute in error.data.invalidAttributes) {
-                                $scope.errorMessage = 'Invalid data in ' + attribute;
+                                $scope.errorMessage = $scope.errorMessage + ' Invalid data in ' + attribute;
                             }
                         } else {
                             $scope.errorMessage = 'Error writing to database.';

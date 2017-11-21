@@ -32,6 +32,9 @@
           <input class="form-control" type="text" ng-model="newPersonCity" ng-disabled="busySubmittingPerson" name="City" required="" placeholder="City" />
           <input class="form-control" type="text" ng-model="newPersonState" ng-disabled="busySubmittingPerson" name="State" required="" placeholder="State" />
           <input class="form-control" type="text" ng-model="newPersonZip" ng-disabled="busySubmittingPerson" name="Zip" required="" placeholder="Zip" />
+          <input class="form-control" type="text" ng-model="newPersonPhone" ng-disabled="busySubmittingPerson" name="Phone" required="" placeholder="Phone" />
+          <input class="form-control" type="checkbox" ng-model="newPersonWheelchair" ng-disabled="busySubmittingPerson" name="Wheelchair" required="" placeholder="Uses Wheelchair" />
+          <input class="form-control" type="text" ng-model="newPersonPhotoUrl" ng-disabled="busySubmittingPerson" name="Photo Url" required="" placeholder="Photo Url" />
           <button class="btn btn-success" type="submit" ng-disabled="busySubmittingPerson">
             {{busySubmittingPerson? 'Submitting...':'Submit Person'}}
           </button>
@@ -52,6 +55,9 @@
                 <th>City</th>
                 <th>State</th>
                 <th>Zip</th>
+                <th>Phone</th>
+                <th>Wheelchair</th>
+                <th>PhotoUrl</th>
               </tr>
             </thead>
             <tbody>
@@ -62,6 +68,9 @@
                 <td>{{person.City}}</td>
                 <td>{{person.State}}</td>
                 <td>{{person.Zip}}</td>
+                <td>{{person.Phone}}</td>
+                <td>{{person.Wheelchair}}</td>
+                <td>{{person.PhotoUrl}}</td>
               </tr>
             </tbody>
           </table>
