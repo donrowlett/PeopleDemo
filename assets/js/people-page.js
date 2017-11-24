@@ -44,6 +44,33 @@ myApp.controller('PageCtrl', [
         });
     }
 
+    $scope.edit_person = function (personData) {
+      $scope.newPersonID = personData.ID;
+      $scope.newPersonFirstName = personData.FirstName;
+      $scope.newPersonLastName = personData.LastName;
+      $scope.newPersonStreetAddress = personData.StreetAddress;
+      $scope.newPersonCity = personData.City;
+      $scope.newPersonState = personData.State;
+      $scope.newPersonZip = personData.Zip;
+      $scope.newPersonPhone = personData.Phone;
+      $scope.newPersonPhotoUrl = personData.PhotoUrl;
+      $scope.buttonLabel = "Update Person";
+    };
+
+    $scope.delete_person = function (personData) {
+      if (confirm("Delete this person?") === true) {
+        $http.post('/people/destroy/' + personData.ID)
+          .then(function onSuccess(sailsResponse) {
+            fetch_people();
+          })
+          .catch(function onError(error) {
+            console.log("An unexpected error occurred: " + error.statusText);
+            $scope.errorMessage = 'Error deleting from database.';
+          })
+          .finally(function eitherWay() {
+          });
+      }
+    };
 
     $scope.submitNewPerson = function () {
       $scope.errorMessage = '';
@@ -58,6 +85,7 @@ myApp.controller('PageCtrl', [
       // Harvest the data out of the form
       // (thanks to ng-model, it's already in the $scope object)
       var _newPerson = {
+        ID: $scope.newPersonID,
         FirstName: $scope.newPersonFirstName,
         LastName: $scope.newPersonLastName,
         StreetAddress: $scope.newPersonStreetAddress,
@@ -65,7 +93,6 @@ myApp.controller('PageCtrl', [
         State: $scope.newPersonState,
         Zip: $scope.newPersonZip,
         Phone: $scope.newPersonPhone,
-        Wheelchair: $scope.newPersonWheelchair,
         PhotoUrl: $scope.newPersonPhotoUrl
       };
 
@@ -97,45 +124,85 @@ myApp.controller('PageCtrl', [
         // (also disables form submission)
         $scope.busySubmittingPerson = true;
 
-        $http.post('/people/create', {
-          FirstName: _newPerson.FirstName,
-          LastName: _newPerson.LastName,
-          StreetAddress: _newPerson.StreetAddress,
-          City: _newPerson.City,
-          State: _newPerson.State,
-          Zip: _newPerson.Zip,
-          Phone: _newPerson.Phone,
-          Wheelchair: _newPerson.Wheelchair,
-          PhotoUrl: _newPerson.PhotoUrl
-        })
-          .then(function onSuccess(sailsResponse) {
-            $scope.people.unshift(_newPerson);
-            fetch_people();
+        if (_newPerson.ID === "" || _newPerson.ID === undefined) {
+          $http.post('/people/create', {
+            FirstName: _newPerson.FirstName,
+            LastName: _newPerson.LastName,
+            StreetAddress: _newPerson.StreetAddress,
+            City: _newPerson.City,
+            State: _newPerson.State,
+            Zip: _newPerson.Zip,
+            Phone: _newPerson.Phone,
+            PhotoUrl: _newPerson.PhotoUrl
           })
-          .catch(function onError(error) {
-            console.log("An unexpected error occurred: " + error.statusText);
-            if (error.data.invalidAttributes) {
-              $scope.errorMessage = 'Error writing to database. ';
-              for (var attribute in error.data.invalidAttributes) {
-                $scope.errorMessage = 'Invalid data in ' + attribute;
+            .then(function onSuccess(sailsResponse) {
+              $scope.people.unshift(_newPerson);
+              fetch_people();
+            })
+            .catch(function onError(error) {
+              console.log("An unexpected error occurred: " + error.statusText);
+              if (error.data.invalidAttributes) {
+                $scope.errorMessage = 'Error writing to database. ';
+                for (var attribute in error.data.invalidAttributes) {
+                  $scope.errorMessage = 'Invalid data in ' + attribute;
+                }
+              } else {
+                $scope.errorMessage = 'Error writing to database.';
               }
-            } else {
-              $scope.errorMessage = 'Error writing to database.';
-            }
 
+            })
+            .finally(function eitherWay() {
+              $scope.busySubmittingPerson = false;
+              $scope.newPersonID = '';
+              $scope.newPersonFirstName = '';
+              $scope.newPersonLastName = '';
+              $scope.newPersonStreetAddress = '';
+              $scope.newPersonCity = '';
+              $scope.newPersonState = '';
+              $scope.newPersonZip = '';
+              $scope.newPersonPhone = '';
+              $scope.newPersonPhotoUrl = '';
+            });
+        } else {
+          $http.post('/people/update/' + _newPerson.ID, {
+            FirstName: _newPerson.FirstName,
+            LastName: _newPerson.LastName,
+            StreetAddress: _newPerson.StreetAddress,
+            City: _newPerson.City,
+            State: _newPerson.State,
+            Zip: _newPerson.Zip,
+            Phone: _newPerson.Phone,
+            PhotoUrl: _newPerson.PhotoUrl
           })
-          .finally(function eitherWay() {
-            $scope.busySubmittingPerson = false;
-            $scope.newPersonFirstName = '';
-            $scope.newPersonLastName = '';
-            $scope.newPersonStreetAddress = '';
-            $scope.newPersonCity = '';
-            $scope.newPersonState = '';
-            $scope.newPersonZip = '';
-            $scope.newPersonPhone = '';
-            $scope.newPersonWheelchair = '';
-            $scope.newPersonPhotoUrl = '';
-          });
+            .then(function onSuccess(sailsResponse) {
+              $scope.people.unshift(_newPerson);
+              fetch_people();
+            })
+            .catch(function onError(error) {
+              console.log("An unexpected error occurred: " + error.statusText);
+              if (error.data.invalidAttributes) {
+                $scope.errorMessage = 'Error writing to database. ';
+                for (var attribute in error.data.invalidAttributes) {
+                  $scope.errorMessage = 'Invalid data in ' + attribute;
+                }
+              } else {
+                $scope.errorMessage = 'Error writing to database.';
+              }
+
+            })
+            .finally(function eitherWay() {
+              $scope.busySubmittingPerson = false;
+              $scope.newPersonID = '';
+              $scope.newPersonFirstName = '';
+              $scope.newPersonLastName = '';
+              $scope.newPersonStreetAddress = '';
+              $scope.newPersonCity = '';
+              $scope.newPersonState = '';
+              $scope.newPersonZip = '';
+              $scope.newPersonPhone = '';
+              $scope.newPersonPhotoUrl = '';
+            });
+        }
       }
     };
   }

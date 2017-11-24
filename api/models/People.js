@@ -48,12 +48,8 @@ module.exports = {
       },
       Phone: {
         type: 'string',
-        required: true,
+        required: false,
         regex: /^\d{3}-\d{3}-\d{4}$/
-      },
-      Wheelchair: {
-        type: 'boolean',
-        required: true,
       },
       PhotoUrl: {
         type: 'string',

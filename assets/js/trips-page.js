@@ -38,7 +38,7 @@ myApp.controller('AddTripCtrl', [
             // (this is where you put your client-side validation when relevant)
 
             if (_newTrip.OriginDateTime === null || !/.*/.test(_newTrip.OriginDateTime)) {
-                $scope.errorMessage = "Origin DateTime is required and must be DateTime.";
+                $scope.errorMessage = "Origin DateTime must be yyyy-mm-dd hh:mm:ss.";
             }
             if (_newTrip.OriginAddress === null) {
               $scope.errorMessage = "Origin Address is required.";
@@ -67,8 +67,8 @@ myApp.controller('AddTripCtrl', [
             if (_newTrip.DestinationZip === null || !/^\d{5}$|^\d{5}(-\d{4})$/.test(_newTrip.DestinationZip)) {
               $scope.errorMessage = "Destination Zip is required and must be 5 digits or 5 digits followed by hyphen and 4 digits.";
             }
-            if (_newTrip.DestinationPhone === null || !/^\d{3}-\d{3}-\d{4}$/.test(_newTrip.DestinationPhone)) {
-              $scope.errorMessage = "Destination Phone is required and must be 10 digits.";
+            if (_newTrip.DestinationPhone === null) {
+              $scope.errorMessage = "Destination Phone is required.";
             }
 
             if ($scope.errorMessage === "") {
@@ -92,7 +92,6 @@ myApp.controller('AddTripCtrl', [
                   DestinationPhone: _newTrip.DestinationPhone
                 })
                     .then(function onSuccess(sailsResponse) {
-                        $scope.trips.unshift(_newTrip);
                     })
                     .catch(function onError(error) {
                         console.log("An unexpected error occurred: " + error.statusText);

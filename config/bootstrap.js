@@ -10,8 +10,10 @@
  */
 
 module.exports.bootstrap = function (cb) {
-  "Use strict";
-  Vehicles.count().exec(function (err, numVehicles) {
+  "use strict";
+    bootstrapTimeout: 10000, // in millis
+
+    Vehicles.count().exec(function (err, numVehicles) {
     if (err) {
       return cb(err);
     }
@@ -24,7 +26,58 @@ module.exports.bootstrap = function (cb) {
           VehiclePhotoUrl: 'falcon.jpg',
           MaxSpeed: '86,000 mps',
           Persons: '6',
-          WheelchairLift: true,
+          Driver : 'Han',
+          DriverPhotoUrl: 'han.jpg',
+          InService: true
+        },
+        {
+          Name : 'Wright Flyer',
+          Description : 'Wright Brothers Aircraft',
+          VehiclePhotoUrl: 'wright.jpg',
+          MaxSpeed: '26mph',
+          Persons: '2',
+          Driver : 'Orville',
+          DriverPhotoUrl: 'orville.jpg',
+          InService: true
+        },
+        {
+          Name : 'RVTD Van #1',
+          Description : '12 Passenger',
+          VehiclePhotoUrl: 'van1.jpg',
+          MaxSpeed: '55mph',
+          Persons: '12',
+          Driver : 'Aaron',
+          DriverPhotoUrl: 'aaron.jpg',
+          InService: true
+        },
+        {
+          Name : 'RVTD Van #2',
+          Description : '8 Passenger',
+          VehiclePhotoUrl: 'van2.jpg',
+          MaxSpeed: '55mph',
+          Persons: '8',
+          Driver : 'Bob',
+          DriverPhotoUrl: 'bob.jpg',
+          InService: true
+        },
+        {
+          Name : 'RVTD Van #3',
+          Description : '6 Passenger',
+          VehiclePhotoUrl: 'van3.jpg',
+          MaxSpeed: '55mph',
+          Persons: '6',
+          Driver : 'Charles',
+          DriverPhotoUrl: 'charles.jpg',
+          InService: true
+        },
+        {
+          Name : 'Rockswagon',
+          Description : 'Flintstones human-powered vehicle',
+          VehiclePhotoUrl: 'rockswagon.jpg',
+          MaxSpeed: '5mph',
+          Persons: '4',
+          Driver : 'Barney',
+          DriverPhotoUrl: 'barney.jpg',
           InService: true
         }
         ];

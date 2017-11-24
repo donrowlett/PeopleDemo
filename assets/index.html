@@ -19,22 +19,21 @@
         </a>
       </div>
       <div class="navbar-heading">
-        People. RVTD People.
+        TransLink Admin.
       </div>
     </div>
     <div class="main container clearfix ng-cloak">
       <!-- SUBMIT NEW PERSON -->
       <section class="the-submit-person-form col-md-4">
         <form ng-submit="submitNewPerson()">
-          <input class="form-control" type="text" ng-model="newPersonFirstName" ng-disabled="busySubmittingPerson" name="FirstName" required="" placeholder="First Name" />
-          <input class="form-control" type="text" ng-model="newPersonLastName" ng-disabled="busySubmittingPerson" name="LastName" required="" placeholder="Last Name" />
-          <input class="form-control" type="text" ng-model="newPersonStreetAddress" ng-disabled="busySubmittingPerson" name="StreetAddress" required="" placeholder="Address" />
-          <input class="form-control" type="text" ng-model="newPersonCity" ng-disabled="busySubmittingPerson" name="City" required="" placeholder="City" />
-          <input class="form-control" type="text" ng-model="newPersonState" ng-disabled="busySubmittingPerson" name="State" required="" placeholder="State" />
-          <input class="form-control" type="text" ng-model="newPersonZip" ng-disabled="busySubmittingPerson" name="Zip" required="" placeholder="Zip" />
-          <input class="form-control" type="text" ng-model="newPersonPhone" ng-disabled="busySubmittingPerson" name="Phone" required="" placeholder="Phone" />
-          <input class="form-control" type="checkbox" ng-model="newPersonWheelchair" ng-disabled="busySubmittingPerson" name="Wheelchair" required="" placeholder="Uses Wheelchair" />
-          <input class="form-control" type="text" ng-model="newPersonPhotoUrl" ng-disabled="busySubmittingPerson" name="Photo Url" required="" placeholder="Photo Url" />
+          <input class="form-control" type="text" ng-model="newPersonFirstName" ng-disabled="busySubmittingPerson" name="FirstName" required placeholder="First Name" />
+          <input class="form-control" type="text" ng-model="newPersonLastName" ng-disabled="busySubmittingPerson" name="LastName" required placeholder="Last Name" />
+          <input class="form-control" type="text" ng-model="newPersonStreetAddress" ng-disabled="busySubmittingPerson" name="StreetAddress" required placeholder="Address" />
+          <input class="form-control" type="text" ng-model="newPersonCity" ng-disabled="busySubmittingPerson" name="City" required placeholder="City" />
+          <input class="form-control" type="text" ng-model="newPersonState" ng-disabled="busySubmittingPerson" name="State" required placeholder="State" />
+          <input class="form-control" type="text" ng-model="newPersonZip" ng-disabled="busySubmittingPerson" name="Zip" required placeholder="Zip" />
+          <input class="form-control" type="text" ng-model="newPersonPhone" ng-disabled="busySubmittingPerson" name="Phone"  placeholder="Phone" />
+          <input class="form-control" type="text" ng-model="newPersonPhotoUrl" ng-disabled="busySubmittingPerson" name="Photo Url" placeholder="Photo Url" />
           <button class="btn btn-success" type="submit" ng-disabled="busySubmittingPerson">
             {{busySubmittingPerson? 'Submitting...':'Submit Person'}}
           </button>
@@ -49,6 +48,8 @@
           <table class="table rvtd-colors">
             <thead>
               <tr>
+                <th>Edit</th>
+                <th>Delete</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
@@ -56,12 +57,17 @@
                 <th>State</th>
                 <th>Zip</th>
                 <th>Phone</th>
-                <th>Wheelchair</th>
                 <th>PhotoUrl</th>
               </tr>
             </thead>
             <tbody>
               <tr class="people" ng-repeat="person in people" ng-if="!peopleLoading">
+                <td>
+                  <button ng-click="edit_person(person)">Edit</button>
+                </td>
+                <td>
+                  <button ng-click="delete_person(person)">Delete</button>
+                </td>
                 <td>{{person.FirstName}}</td>
                 <td>{{person.LastName}}</td>
                 <td>{{person.StreetAddress}}</td>
@@ -69,7 +75,6 @@
                 <td>{{person.State}}</td>
                 <td>{{person.Zip}}</td>
                 <td>{{person.Phone}}</td>
-                <td>{{person.Wheelchair}}</td>
                 <td>{{person.PhotoUrl}}</td>
               </tr>
             </tbody>

@@ -44,10 +44,6 @@ module.exports = {
         type: 'string',
         required: false
       },
-      WheelchairLift: {
-        type: 'boolean',
-        required: true
-      },
       InService: {
         type: 'boolean',
         required: true

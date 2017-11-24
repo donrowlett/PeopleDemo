@@ -19,14 +19,14 @@
         </a>
       </div>
       <div class="navbar-heading">
-        People. RVTD People.
+        Where are we going today?
       </div>
     </div>
     <div class="main container clearfix ng-cloak">
       <!-- SUBMIT NEW Trip -->
       <section class="the-submit-Person-form col-md-4">
         <form ng-submit="submitNewTrip()">
-          <input class="form-control" type="text" ng-model="newTripOriginDateTime" ng-disabled="busySubmittingTrip" name="OriginDateTime" required="" placeholder="Origin DateTime" />
+          <input class="form-control" type="text" ng-model="newTripOriginDateTime" ng-disabled="busySubmittingTrip" name="OriginDateTime" required placeholder="Origin DateTime" />
           <input class="form-control" type="text" ng-model="newTripOriginAddress" ng-disabled="busySubmittingTrip" name="OriginAddress" required="" placeholder="Origin Address" />
           <input class="form-control" type="text" ng-model="newTripOriginCity" ng-disabled="busySubmittingTrip" name="OriginCity" required="" placeholder="Origin City" />
           <input class="form-control" type="text" ng-model="newTripOriginState" ng-disabled="busySubmittingTrip" name="OriginState" required="" placeholder="Origin State" />
@@ -36,7 +36,7 @@
           <input class="form-control" type="text" ng-model="newTripDestinationCity" ng-disabled="busySubmittingTrip" name="DestinationCity" required="" placeholder="Destination City" />
           <input class="form-control" type="text" ng-model="newTripDestinationState" ng-disabled="busySubmittingTrip" name="DestinationState" required="" placeholder="Destination State" />
           <input class="form-control" type="text" ng-model="newTripDestinationZip" ng-disabled="busySubmittingTrip" name="DestinationZip" required="" placeholder="Destination Zip" />
-          <input class="form-control" type="text" ng-model="newTripDestinationPhone" ng-disabled="busySubmittingTrip" name="DestinationPhone" required="" placeholder="Destination Phone" />
+          <input class="form-control" type="text" ng-model="newTripDestinationPhone" ng-disabled="busySubmittingTrip" name="DestinationPhone" placeholder="Destination Phone" />
           <button class="btn btn-success" type="submit" ng-disabled="busySubmittingTrip">
             {{busySubmittingTrip? 'Submitting...':'Submit Trip'}}
           </button>
